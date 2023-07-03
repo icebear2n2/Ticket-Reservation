@@ -32,13 +32,15 @@ public class ReservationServlet extends HttpServlet {
 
         req.setAttribute("airplaneList", module.getAirPlaneList_by_Database());
 //        req.getRequestDispatcher("views/airplaneList.jsp").forward(req, resp);
+
         Cookie[] cookies = req.getCookies();
         String userID = "";
         for (int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equals("LoginID"))
+            if (cookies[i].getName().equals("loginID"))
                 userID = cookies[i].getValue();
         }
-        resp.addCookie(new Cookie("LoginID", userID));
+        System.out.println("userID = " + userID);
+        resp.addCookie(new Cookie("loginID", userID));
         req.getRequestDispatcher("views/airplaneList.jsp").forward(req, resp);
 
 
@@ -57,9 +59,10 @@ public class ReservationServlet extends HttpServlet {
         Cookie[] cookies = req.getCookies();
         String userID = "";
         for (int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equals("LoginID"))
+            if (cookies[i].getName().equals("loginID"))
                 userID = cookies[i].getValue();
         }
+
         // Pass the form data to the reservationAirPlane_Step2 method
         module.reservationAirPlane_Step2(airplaneName, seatName, userID);
         // Retrieve the seat list

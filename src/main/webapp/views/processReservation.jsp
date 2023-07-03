@@ -77,7 +77,7 @@
             <label>[Reservation Details]</label>
             <p><strong>Airplane Name:</strong> ${param.airplaneName}</p>
             <p><strong>Seat Name:</strong> ${param.seatName}</p>
-            <p><strong>User ID:</strong> ${sessionScope.userID}</p>
+            <p><strong>User ID:</strong> ${cookie.loginID.value}</p>
         </div>
 
         <div class="seat-details">

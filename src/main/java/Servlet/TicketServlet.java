@@ -25,10 +25,10 @@ public class TicketServlet extends HttpServlet {
         Cookie[] cookies = req.getCookies();
         String userID = "";
         for (int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equals("LoginID"))
+            if (cookies[i].getName().equals("loginID"))
                 userID = cookies[i].getValue();
         }
-        resp.addCookie(new Cookie("LoginID", userID));
+        resp.addCookie(new Cookie("loginID", userID));
         req.setAttribute("ticketList", module.getMyTickets_by_Database(userID));
         req.getRequestDispatcher("views/ticketList.jsp").forward(req, resp);
     }
